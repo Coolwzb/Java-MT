@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    
+   	<context:component-scan base-package="com.up.shiro"></context:component-scan>
+	
+	<!-- 1.配置DefaultWebSecurityManager -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	<property name="cacheManager" ref="cacheManager"></property>
+	<property name="realms">
+	<list>
+    <ref bean="loginRealm"/>
+	</list>
+	</property>
+	</bean>
+	
+	<!-- 2.配置EhCacheManager -->
+	<!-- 需要加入EhCacheManager jar包及配置文件 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+	<property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
+	</bean>
+	
+	<!-- 3.配置SaltAwareJdbcRealm -->
+	<!-- 直接配置实现了org.apache.shiro.realm.Realm接口的bean -->
+	<bean id="loginRealm" class="com.up.shiro.LoginRealm">
+	<property name="credentialsMatcher">
+	<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+	<property name="hashAlgorithmName" value="MD5"></property>
+	<property name="hashIterations" value="1024"></property>
+	</bean>
+	</property>
+	</bean>
+
+	<!-- 4.配置LifecycleBeanPostProcessor,可以自动来调用配置Spring IOC容器中shiro bean的生命周期方法 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+	
+	<!-- 5.启动IOC容器中使用shiro注释,但必须在配置LifecycleBeanPostProcess之后才能使用 -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"></bean>
+	
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+	<property name="securityManager" ref="securityManager"></property>
+	</bean>
+	
+	<!-- 6.配置ShiroFilterFactoryBean -->
+	<!-- anon:可以被匿名访问 -->
+	<!-- authc:必须认证(即shiro登录)之后才可以访问的页面,但是login.jsp是默认进入的绿色通道-->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	<property name="securityManager" ref="securityManager"></property>
+	<property name="loginUrl" value="/admin/login.jsp"></property>
+	<property name="filterChainDefinitionMap" ref="filterChainDefinitionMap"></property>
+	</bean>
+	
+	<bean id="filterChainDefinitionMap" factory-bean="filterChainDefinitionMapBuilder" factory-method="builderFilterChainDefinitionMap"></bean>
+	
+	<bean id="filterChainDefinitionMapBuilder" class="com.up.shiro.FilterChainDefinitionMapBuilder"></bean>
+	
+</beans>

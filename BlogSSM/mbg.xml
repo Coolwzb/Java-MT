@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+<context id="DB2Tables" targetRuntime="MyBatis3">
+  <!-- 生成pojo中实体类中tostring方法 -->
+     <!-- <plugin type="org.mybatis.generator.plugins.ToStringPlugin" /> -->
+     
+  <!-- 去掉注释 -->
+  <commentGenerator>
+  <property name="suppressAllComments" value="true"/>
+  </commentGenerator>
+  
+  
+  
+    <!-- 配置数据源 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql:///blog"
+        userId="root"
+        password="111111">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <!-- 指定JavaBean实体类生成位置 -->
+    <javaModelGenerator targetPackage="com.up.entity" targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <!-- Mapper.xml映射文件生成位置 -->
+    <sqlMapGenerator targetPackage="mapper"  targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <!-- 指定DAO接口生成位置，Mapper接口生成位置 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.up.dao"  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <!-- 指定生成策略 -->
+    <table tableName="blog" domainObjectName="Blog" ></table>
+     <table tableName="blogger" domainObjectName="Blogger" ></table>
+     <table tableName="blogtype" domainObjectName="BlogType" ></table>
+     <table tableName="comment" domainObjectName="Comment" ></table>
+     <table tableName="link" domainObjectName="Link" ></table> 
+  </context>
+
+</generatorConfiguration>

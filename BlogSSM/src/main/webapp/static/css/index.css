@@ -1,0 +1,155 @@
+/*--公共样式--*/
+body{height: 100%; background: none;}
+a{transition: all .25s ease-in-out; -moz-transition: all .25s ease-in-out; -webkit-transition: all .25s ease-in-out;}
+a:focus, a:active{outline: 0;}
+input, select, textarea{border-color: #c9c9c9;}
+hr{-moz-box-shadow: 0 1px 0 #fff; -webkit-box-shadow: 0 1px 0 #fff;box-shadow: 0 1px 0 #fff;}
+
+/*框架顶部样式*/
+.layui-layout-admin .layui-logo{font-size: 18px; overflow: hidden;}
+.layui-layout-admin .layui-logo .layui-nav-img{margin-right: 0; border-radius: 3px;} 
+
+/*框架页 iframe 样式*/
+.layui-body-iframe, 
+.layui-body iframe{position: absolute; width: 100%; height: 100%; border: none; left: 0; top: 0; right: 0; bottom: 0;}
+
+/*框架顶部导航菜单样式*/
+.layui-layout-admin .layui-header .layui-nav-bar,
+.layui-header .layui-nav>.layui-this:after{height: 3px; top: 0 !important;}
+.layui-header .layui-nav>.layui-nav-item .layui-icon{font-size: 110%;}
+
+/*框架顶住主导航菜单样式重置*/
+.layui-header .layui-layout-left .layui-nav{display: inline-block; }
+.layui-header .layui-layout-left .layui-nav-item a{padding: 0 15px;}
+.layui-header .layui-nav .layui-badge, 
+.layui-header .layui-nav .layui-badge-dot{right: 1px;}
+.layui-header .layui-nav-img{margin-right: 5px;}
+.layui-header .layui-nav a>.layui-icon{padding: .25em;}
+
+/*框架顶部天气组件样式*/
+.layui-header .weather {padding: 13px 10px; height: 55px; line-height: 30px;}
+.layui-header .weather .tpwidget_alarm_hook,
+.layui-header .weather .tpwidget_alarm_hook *{font-size: 13px;}
+.layui-header .weather .tpwthwidt{margin: -4px;}
+
+/*设置用户名首字母大写*/
+.userName{text-transform: capitalize;}
+
+/*设置框架布局过渡效果淡入淡出*/
+.layui-side{transition: left .3s ease-in-out; -moz-transition: left .3s ease-in-out; -webkit-transition: left .3s ease-in-out;}
+.layui-logo, .layui-layout-left, .layui-body, .layui-footer,
+.layout-side-mobile, .layout-mobile-shadow{transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -webkit-transition: all .3s ease-in-out;}
+
+/*折叠左侧导航菜单的按钮样式*/
+.layui-nav-switch .layui-this:after{height: 0 !important;}
+.layui-nav-switch .layui-this:hover:after,
+.layui-nav-switch .layui-this:focus:after,
+.layui-nav-switch .layui-this:active:after{height: 3px !important;}
+.layui-nav-switch .hideMenu,
+.layui-layout-right .clearCache {padding: 0 12px !important;}
+
+/*框架左侧菜单区域样式*/
+.layui-side{box-shadow: 1px 1px 5px rgba(0,0,0,.05);}
+.layui-side .layui-side-scroll,
+.layui-side .layui-nav-tree{width: 100%;}
+
+.layui-side .layui-side-scroll{height:auto; overflow: hidden;}
+
+.layui-side .layui-nav-tips{display: block; padding: 10px 15px; color: inherit; line-height: normal;}
+.layui-side .layui-nav-tips a{color: #01AAED;;}
+
+.layui-side .layui-nav{color: inherit; background: inherit;}
+.layui-side .layui-nav-item a{padding: 0 15px;}
+.layui-side .layui-nav-item a cite {padding: 0 5px;}
+.layui-side .layui-nav-item a:hover{background: none;}
+
+/*.layui-side .layui-nav-child a{width: auto; height: 42px; line-height: 42px;}*/
+
+/*设置当前选中菜单节点的样式*/
+.layui-side .layui-nav-tree>li.layui-nav-itemed{_background-color: #263345 !important; background-color: rgba(0, 0, 0, .2) !important;}
+.layui-side .layui-nav-tree>li.layui-nav-item>a{border-bottom: 1px solid transparent;}
+.layui-side .layui-nav-tree>li.layui-nav-itemed>a{border-bottom-color: rgba(0,0,0,.2); box-shadow: 0 1px 0 rgba(128,128,128,.2);}
+
+.layui-side .layui-nav-itemed>a{color: inherit !important;}
+.layui-side .layui-nav-itemed>.layui-nav-child{padding: 5px 0; background: none !important;}
+
+/*设置菜单节点默认样式*/
+.layui-side .layui-nav-tree.mutex>li.layui-nav-item{display: none;}
+.layui-side .layui-nav-tree.mutex>li.layui-nav-item.active{display: block;}
+
+/*.layui-side .layui-nav-tree>li.layui-nav-item>a{background-color: rgba(0, 0, 0, .055);}*/	
+
+@media screen and (max-width: 767px){
+	.layui-side .layui-nav-tree>li.layui-nav-item{
+		display: block !important;
+	}
+}
+
+/*设置左侧垂直导航菜单展开或折叠后的 beta 样式*/
+.layout-beta .layui-layout-admin .layui-header .layui-logo{width: 40px; box-shadow: 1px 0 5px rgba(0,0,0,.1);}
+.layout-beta .layui-layout-admin .layui-header .layui-layout-left{left: 40px;}
+
+.layout-beta .layui-layout-admin .layui-side{left: -220px; }
+.layout-beta .layui-layout-admin .layui-body, 
+.layout-beta .layui-layout-admin .layui-footer{left: 0;}
+
+/*设置小尺寸屏幕（手机屏幕）下的功能样式*/
+@media screen and (max-width: 767px){
+	.layout-mobile-aside {
+		display: block !important;
+		position: fixed;
+		z-index: 1000;
+		left: 12px;
+		bottom: 48px;
+		width: 48px;
+		height: 48px;
+		line-height: 48px;
+		border-radius: 2px;
+		text-align: center;
+		background-color: rgba(0,0,0,.7);
+		color: #fff;
+	}
+	.layout-mobile-aside i{font-size: 20px;}
+
+	.layout-mobile-shadow {
+		display: none;
+		content: '';
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(0,0,0,.3);
+		z-index: 998;
+	}
+	
+	.layui-layout-admin .layui-header .layui-logo{width: 40px; box-shadow: 1px 0 5px rgba(0,0,0,.1);}
+	.layui-layout-admin .layui-header .layui-layout-left{left: 40px;}
+	.layui-layout-admin .layui-header .hideMenu{display: none !important;}
+	.layui-layout-admin .layui-header .lay-nav-header{display: none !important;}
+
+	.layui-layout-admin .layui-side{left: -220px; }
+	.layui-layout-admin .layui-body, 
+	.layui-layout-admin .layui-footer{left: 0;}
+	
+	.layout-mobile-beta .layui-layout-admin .layui-side{left: 0px; opacity: .95;}
+	.layout-mobile-beta .layout-mobile-aside{display: none !important; }
+	.layout-mobile-beta .layout-mobile-shadow{display: block !important; }
+}
+
+/*css tab标签关闭*/
+.rightmenu {
+	font-size: 12px;
+	padding: 5px 10px;
+	border-radius: 2px;
+}
+
+.rightmenu li {
+	line-height: 20px;
+	cursor: pointer;
+}
+
+ul.layui-tab-title li:first-child i {
+	display: none;
+}
+
