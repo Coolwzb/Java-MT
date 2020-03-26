@@ -26,4 +26,4 @@
 ● Win7 64位<br>
 <hr>
 四、项目演示（一部分）<br>
-详情见仓库Java-MT下的photo文件夹
+详情见仓库Java-MT下的.png文件
