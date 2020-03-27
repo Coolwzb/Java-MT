@@ -56,7 +56,7 @@ content VARCHAR(255)
 
 
 
-INSERT INTO blogger(NAME,PASSWORD) VALUES('admin','admin');
+INSERT INTO blogger(NAME,PASSWORD) VALUES('administrator','111111');
 INSERT INTO blogger(NAME,PASSWORD) VALUES('aaa001','111111');
 INSERT INTO blogger(NAME,PASSWORD) VALUES('aaa002','111111');
 insert into blogger(name,password) values('aaa003','111111');
@@ -120,7 +120,6 @@ INSERT INTO link(linkname,linkUrl) VALUES('中国知网','https://www.cnki.net/'
 
 
 insert into comment(title,content) values('redis','很好');
-INSERT INTO COMMENT(title,content) VALUES('洛杉矶湖人','湖人加油！湖人总冠军！');
 
 
 
